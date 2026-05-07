@@ -41,10 +41,10 @@
 
       <!-- Editor -->
       <div v-if="treeStore.selectedNode.node_type !== 'folder'" class="editor-area">
-        <TiptapEditor
-          :key="treeStore.selectedNodeId"
-          :nodeId="treeStore.selectedNodeId!"
-        />
+    <TiptapEditor
+      :key="treeStore.selectedNodeId ?? undefined"
+      :nodeId="treeStore.selectedNodeId!"
+    />
       </div>
 
       <!-- Folder: show children overview -->
