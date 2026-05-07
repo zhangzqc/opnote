@@ -55,7 +55,9 @@ const editor = useEditor({
 })
 
 // Expose editor to parent for toolbar
-editorStore.editorInstance = editor.value!
+watch(editor, (val) => {
+  if (val) editorStore.editorInstance = val
+}, { immediate: true })
 
 // Load content when nodeId changes
 watch(() => props.nodeId, async (newId) => {
