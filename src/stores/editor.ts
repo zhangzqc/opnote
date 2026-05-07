@@ -1,15 +1,14 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { getContent, saveContent, type Content } from '../lib/api'
-import type { Editor } from '@tiptap/vue-3'
-
 export const useEditorStore = defineStore('editor', () => {
   const currentContent = ref<string>('')
   const currentFormat = ref<string>('markdown')
   const currentNodeId = ref<number | null>(null)
   const isDirty = ref(false)
   const isSaving = ref(false)
-  const editorInstance = ref<Editor | null>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const editorInstance = ref<any>(null)
   let saveTimer: ReturnType<typeof setTimeout> | null = null
 
   async function loadContent(nodeId: number) {
